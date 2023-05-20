@@ -1,20 +1,33 @@
 class Logic():
 
-  def sort(self,x):
-    m = len(x)//2
-    while m >= 1:
-      for i in range(m):
-        j = i + m
-        while j < len(x):
-          n = x[j]
-          for k in range(j-m,-1,-m):
-            if x[k] > n:
-              x[k+m] = x[k]
-              if k < m:
-                x[k] = n
-            else:
-              x[k+m] = n
+  def sort(self,array):
+    m = len(array)//2                  #1
+    while m >= 1:                      #2
+      for i in range(m):               #3
+        j = i + m                      #4
+        while j < len(array):          #5
+          n = array[j]                 #6
+          for k in range(j-m,-1,-m):   #7
+            if array[k] > n:           #8
+              array[k+m] = array[k]
+              if k < m:                #9
+                array[k] = n
+            else:                      #10
+              array[k+m] = n
               break
           j += m
-      m //= 2
-    return x
+      m //= 2                          #11
+    return array
+
+
+#1 配列の長さの半分の数値を間隔の初期値とする(奇数の場合は余りを切り捨て)
+#2 間隔が1となるまで繰りかえす
+#3 各グループのインデックスの最小値をiとして取り出す
+#4 各グループにおいて、代入を行う整数のインデックスをjとする
+#5 代入を行う整数がある間、比較を繰りかえす
+#6 代入を行う整数の値を保存
+#7 代入する整数との比較を行う整数のインデックスをkとし、左にシフトして比較を行っていく
+#8 比較した整数の方が大きければ、その整数のインデックスを1増やす
+#9 代入する値がグループ内で最も小さければ、グループ内の1番最初に代入する
+#10 比較した整数の方が小さければ、グループ内におけるその整数の後ろに代入する
+#11 間隔を更に半分にする
