@@ -1,13 +1,12 @@
 class Logic():
 
   def sort(self,array):
-    j = 0    #1
-             #2
-    while j < len(array)-1:    #3
-      for i in range(len(array)-1,j,-1):   #4
-        if array[i-1] > array[i]:    #5
+    j = 0                                             #1, 2
+    while j < len(array)-1:                           #3
+      for i in range(len(array)-1,j,-1):              #4
+        if array[i-1] > array[i]:                     #5
           array[i-1],array[i] = array[i],array[i-1]
-      j += 1    #6
+      j += 1                                          #6
     return array
 
 #1 比較を行う要素のインデックスの最小値
